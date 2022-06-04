@@ -40,6 +40,8 @@ end
 Gss = ss(Ag,Bg,Cg,Dg);
 Gtf = tf(Gss);
 
+[GS, GNS] = stabsep(Gss);
+assert(rank(ctrb(GNS.A, GNS.B)) >= size(GNS.A, 1), "The system is instabilizable!");
 disp(Gtf)
 
 %% Define Wp

@@ -9,6 +9,8 @@ Bg(abs(Bg) < 1e-5) = 0;
 Cg = C_full([1, 2, 3, 9], :);
 Dg = zeros(4, 4);
 Gss = ss(Ag, Bg, Cg, Dg);
+[GS, GNS] = stabsep(Gss);
+assert(rank(ctrb(GNS.A, GNS.B)) >= size(GNS.A, 1), "The system is instabilizable!");
 
 % We need to specify Q and R matrice next.
 r = 10;
